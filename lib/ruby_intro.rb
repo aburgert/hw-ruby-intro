@@ -47,7 +47,7 @@ end
 
 vowelstart = "As"
 nostart = "..."
-puts "v == #{'v'.ord}"
+#puts "v == #{'v'.ord}"
 def starts_with_consonant? s
 
   #(65...90, 97...122).each do |i|
@@ -57,13 +57,14 @@ def starts_with_consonant? s
   return false
 end
 
-puts "#{starts_with_consonant? vowelstart} == false"
-puts "#{starts_with_consonant? vowelstart.reverse} == true"
-puts "#{starts_with_consonant? nostart} == false"
-puts "#{starts_with_consonant? 118.chr} == true"
+puts "starts_with_consonant?(\"#{vowelstart}\") == #{starts_with_consonant? vowelstart} == false"
+puts "starts_with_consonant?(\"#{vowelstart.reverse}\") == #{starts_with_consonant? vowelstart.reverse} == true"
+puts "starts_with_consonant?(\"#{nostart}\") == #{starts_with_consonant? nostart} == false"
+puts "starts_with_consonant?(\"#{118.chr}\") == #{starts_with_consonant? 118.chr} == true"
+puts "starts_with_consonant?(\"#{""}\") == #{starts_with_consonant? ""} == false"
 
 def binary_multiple_of_4? s
-  # YOUR CODE HERE
+  # YOUR CODE HEREru
 end
 
 # Part 3
