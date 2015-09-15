@@ -31,7 +31,7 @@ def sum_to_n? arr, n
     for j in (i+1)...len do
       #puts "j = #{j}"
       #puts "  i+j == #{arr[i]+arr[j]}"
-      return true if ((arr[i]+arr[j]) == n) #turns out I was just checking i+j for a while instead of arr[i]+arr[j] >.<
+      return true if ((arr[i]+arr[j]) == n) #turns out I was just checking i+j instead of arr[i]+arr[j] >.<
     end
   end
   return false
@@ -48,13 +48,17 @@ end
 vowelstart = "As"
 nostart = "..."
 #puts "v == #{'v'.ord}"
-def starts_with_consonant? s
 
-  #(65...90, 97...122).each do |i|
-  return false if s.length < 1
-  return false if !(s.chr.ord.between?(64, 91) || s.chr.ord.between?(96, 121))
-  return s.start_with?("A", "a", "E", "e", "I", "i", "O", "o", "U", "u") ? false : true #seems to work despite IDE-displayed error
-  return false
+def starts_with_consonant? s
+  #s = s.chr if s.is_a? Integer #converts Integers to one-character strings via ASCII for funsies
+  return false unless s.is_a? String #Check if string
+  return false if s.length < 1 #Check if empty
+  return false unless (s.chr.ord.between?(65, 90) || s.chr.ord.between?(97, 122)) #Check if starts with letter; Integer.between is inclusive, apparently
+  return s.start_with?("A", "a", "E", "e", "I", "i", "O", "o", "U", "u") ? false : true
+  #c = s.index 0
+  #puts c
+  #return false if c.match(/[A-Za-z]/)
+  #return if s.index 0 =~ /[aeiouAEIOU]/ ? false : true
 end
 
 puts "starts_with_consonant?(\"#{vowelstart}\") == #{starts_with_consonant? vowelstart} == false"
@@ -62,9 +66,17 @@ puts "starts_with_consonant?(\"#{vowelstart.reverse}\") == #{starts_with_consona
 puts "starts_with_consonant?(\"#{nostart}\") == #{starts_with_consonant? nostart} == false"
 puts "starts_with_consonant?(\"#{118.chr}\") == #{starts_with_consonant? 118.chr} == true"
 puts "starts_with_consonant?(\"#{""}\") == #{starts_with_consonant? ""} == false"
+puts "starts_with_consonant?(\"#{122.chr}\") == #{starts_with_consonant?(122.chr)} == true" #check range... Integer.between is inclusive, apparently
+
 
 def binary_multiple_of_4? s
-  # YOUR CODE HEREru
+  return false unless s.is_a? String #check if String
+  return false if s.length < 1
+  return false if s =~ /[^01]/
+  
+  n = s.to_i(2)
+  puts n.to_s(2)
+  return n % 4 == 0 ? true : false
 end
 
 # Part 3
